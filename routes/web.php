@@ -39,9 +39,9 @@ Route::post('/admin/kategori/edit', [KategoriController::class, 'adminEditKatego
 
 Route::get('/admin/blog', [BlogController::class, 'viewAdminBlog']);
 Route::get('/admin/blog/add', [BlogController::class, 'viewAdminTambahBlog']);
+Route::get('/admin/blog/edit/{blog}', [BlogController::class, 'viewAdminEditBlog']);
 Route::post('/admin/blog/add', [BlogController::class, 'tambahBlog']);
-Route::get('/admin/blog/edit', [BlogController::class, 'editBlog']);
-// Route::post('/admin/blog/edit', [BlogController::class, 'adminEditKategori']);
+Route::post('/admin/blog/edit', [BlogController::class, 'editBlog']);
 
 Route::get('/admin/project', [ProjectController::class, 'viewAdminProject']);
 Route::get('/admin/project/add', [ProjectController::class, 'viewAdminTambahProject']);

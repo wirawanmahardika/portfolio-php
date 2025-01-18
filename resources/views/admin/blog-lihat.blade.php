@@ -23,7 +23,7 @@
                   </td>
                   <td class="border-2 border-black space-x-10">
                     <button class="rounded px-3 bg-red-500">Hapus</button>
-                    <a href="/admin/kategori/edit/1" class="rounded px-3 bg-green-500">Edit</a>
+                    <a href="/admin/blog/edit/{{$b->id}}" class="rounded px-3 bg-green-500">Edit</a>
                   </td>
                 </tr>
               @endforeach

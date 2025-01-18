@@ -2,25 +2,19 @@
     <div class="w-full p-5 gap-5 overflow-y-auto flex-col flex">
         <span class="font-bold text-5xl text-center">Edit Blog</span>
 
-        <form id="tambahBlog" class="w-1/2 mx-auto flex flex-col p-5 gap-y-5 ">
+        <form id="editBlog" class="w-1/2 mx-auto flex flex-col p-5 gap-y-5 ">
+          <input type="hidden" name="id" value="{{$blog->id}}" />
             @csrf
-            <div class="flex flex-col">
-              <span class="text-2xl ">ID Blog</span>
-              <input
-                type="number"
-                name="id"
-                class="rounded outline-none border-2 border-black h-8"
-              />
-              {{-- @if ($errors->has("name")) <span class="mt-1 text-red-500 italic text-sm">{{$errors->first('name')}}</span> @endif --}}
-            </div>
+
             <div class="flex flex-col">
               <span class="text-2xl ">Judul</span>
               <input
                 type="text"
                 name="judul"
+                value="{{$blog->judul}}"
                 class="rounded outline-none border-2 border-black h-8"
+                required
               />
-              {{-- @if ($errors->has("name")) <span class="mt-1 text-red-500 italic text-sm">{{$errors->first('name')}}</span> @endif --}}
             </div>
             
             <div class="flex flex-col">
@@ -37,10 +31,10 @@
             <div id="paragrafContainer" class="flex flex-col gap-y-5"></div>
 
             <button class="font-bold px-4 py-1 rounded bg-sky-600 text-stone-200 mx-auto w-fit">
-              Tambah
+              Edit
             </button>
           </form>
     </div>
   
-    <script src="/js/blog-tambah.js"></script>
+    <script src="/js/blog-edit.js"></script>
   </x-admin-layout>
