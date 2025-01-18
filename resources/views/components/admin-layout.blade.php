@@ -40,6 +40,13 @@
                     <a href="/admin/skills/add">Tambah</a>
                     <a href="/admin/skills/edit">Edit</a>
                 </div>
+        
+                <span class="hover:text-sky-600 hover:bg-slate-800 bg-black border-y border-stone-700 p-1 flex justify-between px-2 items-center cursor-pointer">Projects</span>
+                <div class="flex flex-col font-quicksand px-4 overflow-hidden ${height} py-1">
+                    <a href="/admin/project">Lihat</a>
+                    <a href="/admin/project/add">Tambah</a>
+                    <a href="/admin/project/edit">Edit</a>
+                </div>
             </nav>
         </div>
 

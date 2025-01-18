@@ -7,6 +7,9 @@
         <a href='/'>Home</a>
       </li>
       <li class='hover:text-red-800 transition'>
+        <a href='/project'>Project</a>
+      </li>
+      <li class='hover:text-red-800 transition'>
         <a href='/blog'>Blog</a>
       </li>
       <li class='hover:bg-red-800 transition bg-red-700 px-3 py-1 rounded text-black'>
@@ -27,13 +30,13 @@
     </svg>
 
     <div
-    {{-- height: isOpen ? "215px" : "0", --}}
       id="mobile-nav"
       style="transition: height ease-out 0.3s"
       class="h-0 md:hidden absolute z-10 top-full left-0 right-0 bg-black overflow-hidden"
     >
       <div class="flex flex-col gap-y-2 p-2">
         <a class="px-2 py-1 rounded ring-blue-400 hover:ring-2" href="/">Home</a>
+        <a class="px-2 py-1 rounded ring-blue-400 hover:ring-2" href="/project">Project</a>
         <a class="px-2 py-1 rounded ring-blue-400 hover:ring-2" href="/blog">Blog</a>
         <a class="px-2 py-1 rounded ring-blue-400 hover:ring-2" href="/contact">Contact</a>
       </div>

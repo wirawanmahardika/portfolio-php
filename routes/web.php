@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillsController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::get('/', [Controller::class, 'home']);
 Route::get('/contact', [Controller::class, 'contact']);
 Route::get('/blog', [Controller::class, 'blog']);
 Route::get('/blog/{blog}', [Controller::class, 'readBlog']);
+Route::get('/project', [Controller::class, 'project']);
 
 
 Route::get('/admin', [Controller::class, 'admin']);
@@ -38,4 +40,11 @@ Route::post('/admin/kategori/edit', [KategoriController::class, 'adminEditKatego
 Route::get('/admin/blog', [BlogController::class, 'viewAdminBlog']);
 Route::get('/admin/blog/add', [BlogController::class, 'viewAdminTambahBlog']);
 Route::post('/admin/blog/add', [BlogController::class, 'tambahBlog']);
-// Route::post('/admin/kategori/edit', [KategoriController::class, 'adminEditKategori']);
+Route::get('/admin/blog/edit', [BlogController::class, 'editBlog']);
+// Route::post('/admin/blog/edit', [BlogController::class, 'adminEditKategori']);
+
+Route::get('/admin/project', [ProjectController::class, 'viewAdminProject']);
+Route::get('/admin/project/add', [ProjectController::class, 'viewAdminTambahProject']);
+Route::get('/admin/project/edit', [ProjectController::class, 'viewAdminEditProject']);
+Route::post('/admin/project/add', [ProjectController::class, 'tambahProject']);
+Route::post('/admin/project/edit', [ProjectController::class, 'editProject']);

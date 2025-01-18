@@ -36,4 +36,6 @@ class BlogController extends Controller
         $blog->contents()->createMany($isi);
         return response(content: 'Berhasil menambah blog', status: 200);
     }
+
+    public function editBlog(Request $request) {}
 }
