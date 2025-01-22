@@ -24,8 +24,10 @@ Route::get('/blog', [Controller::class, 'blog']);
 Route::get('/blog/{blog}', [Controller::class, 'readBlog']);
 Route::get('/project', [Controller::class, 'project']);
 
-
 Route::get('/admin', [Controller::class, 'admin']);
+Route::get('/admin/about', [Controller::class, 'adminAbout']);
+Route::post('/admin/about', [Controller::class, 'adminPostAbout']);
+
 Route::get('/admin/skills', [SkillsController::class, 'viewAdminSkill']);
 Route::get('/admin/skills/add', [SkillsController::class, 'viewAdminTambahSkill']);
 Route::get('/admin/skills/edit', [SkillsController::class, 'viewAdminEditSkill']);

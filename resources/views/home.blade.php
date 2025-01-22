@@ -7,6 +7,7 @@
             <x-navbar></x-navbar>
             <x-jumbotron></x-jumbotron>
         </div>
+        <x-about>{{$about}}</x-about>
         <x-services></x-services>
         {{-- PROJECTS --}}
         <x-skill>
@@ -17,7 +18,6 @@
             </div>
           @endforeach
         </x-skill>
-        <x-about></x-about>
         {{-- <x-contact></x-contact> --}}
   
         <div class="hover:bg-gray-900 hover:ring-1 ring-red-500 fixed cursor-pointer text-black w-fit h-fit z-50 bottom-3 right-3 md:bottom-10 md:right-10 bg-gray-800 p-2 rounded">

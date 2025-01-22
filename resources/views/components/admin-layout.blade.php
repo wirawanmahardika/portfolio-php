@@ -26,6 +26,7 @@
         
                 <a href="/admin" class="hover:text-sky-600 hover:bg-slate-800 bg-black border-y border-stone-700 p-1 flex justify-between px-2 items-center cursor-pointer">Home</a>
                 <a href="/admin/kategori" class="hover:text-sky-600 hover:bg-slate-800 bg-black border-y border-stone-700 p-1 flex justify-between px-2 items-center cursor-pointer">Kategori</a>
+                <a href="/admin/about" class="hover:text-sky-600 hover:bg-slate-800 bg-black border-y border-stone-700 p-1 flex justify-between px-2 items-center cursor-pointer">About</a>
         
                 <span class="hover:text-sky-600 hover:bg-slate-800 bg-black border-y border-stone-700 p-1 flex justify-between px-2 items-center cursor-pointer">Blog</span>
                 <div class="flex flex-col font-quicksand px-4 overflow-hidden ${height} py-1">

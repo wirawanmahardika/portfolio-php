@@ -7,7 +7,9 @@ use App\Models\Project;
 use App\Models\Skill;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Storage;
 
 class Controller extends BaseController
 {
@@ -26,7 +28,8 @@ class Controller extends BaseController
     public function home()
     {
         $skills = Skill::all();
-        return view('home', ['skills' => $skills]);
+        $about = Storage::get('about.txt');
+        return view('home', ['skills' => $skills, 'about' => $about]);
     }
 
     public function blog()
@@ -44,5 +47,17 @@ class Controller extends BaseController
     {
         $projects = Project::all();
         return view('project', ['projects' => $projects]);
+    }
+
+    public function adminAbout()
+    {
+        $text = Storage::get('about.txt');
+        return view('admin.about', ['text' => $text]);
+    }
+
+    public function adminPostAbout(Request $request)
+    {
+        Storage::put('about.txt', $request->text);
+        return redirect('/admin/about');
     }
 }
