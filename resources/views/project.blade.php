@@ -3,11 +3,11 @@
 
     <x-navbar></x-navbar>
 
-    <main class="bg-bgBlack min-h-screen pt-10 text-white px-20 w-full">
+    <main class="bg-bgBlack min-h-screen py-10 text-white px-5 xl:px-20 w-full">
         <h2 class="font-semibold text-3xl text-center">Projects</h2>
 
-        <div class="w-full grid grid-cols-3 gap-3">
-            <span class="col-span-3 font-semibold text-2xl">APIs</span>
+        <div class="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
+            <span class="col-span-1 sm:col-span-2 xl:col-span-3 font-semibold text-2xl">APIs</span>
 
             @foreach ($apis as $a)
                 <div class="flex flex-col gap-y-2 border-2 border-red-800 bg-white text-black rounded px-2 py-3">
@@ -17,8 +17,8 @@
             @endforeach
         </div>
 
-        <div class="grid grid-cols-3 gap-3 mt-10">
-            <span class="col-span-3 font-semibold text-2xl">Websites</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-10">
+            <span class="col-span-1 md:col-span-3 font-semibold text-2xl">Websites</span>
             @foreach ($projects as $p)
                 <div class="border-2 border-slate-500 rounded bg-white">
                     <img src="{{ asset('storage/' . $p->image) }}" alt="image" class="border-b border-black">
