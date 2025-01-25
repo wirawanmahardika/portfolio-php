@@ -11,8 +11,9 @@ class ProjectController extends Controller
 {
     public function viewAdminProject()
     {
-        $projects = Project::all();
-        return view('admin.project-lihat', ['projects' => $projects]);
+        $projects = Project::where('is_api', false)->get();
+        $apis = Project::where('is_api', true)->get();
+        return view('admin.project-lihat', ['projects' => $projects, 'apis' => $apis]);
     }
 
     public function viewAdminTambahProject()
@@ -58,10 +59,11 @@ class ProjectController extends Controller
     {
         $validated = $request->validate([
             'nama' => ['required'],
-            'deskripsi' => ['required'],
-            'image' => ['required', 'file', 'max:5000'],
+            'deskripsi' => ['nullable'],
+            'image' => ['file', 'max:5000'],
             'web' => ['nullable', 'min:1'],
-            'github' => ['min:1', 'nullable']
+            'github' => ['min:1', 'nullable'],
+            'is_api' => ['required']
         ]);
 
         $data = [];
@@ -70,8 +72,18 @@ class ProjectController extends Controller
                 $data[$k] = $request->file('image')->store('project_image', 'public');
                 continue;
             }
+
+
+
+            if ($k === 'is_api') {
+                $isApi = $request->is_api === 'true' ? true : false;
+                $data[$k] = $isApi;
+                continue;
+            }
+
             $data[$k] = $v;
         }
+
 
         Project::create($data);
         return redirect('/admin/project');

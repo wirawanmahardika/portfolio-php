@@ -39,7 +39,6 @@
                 <div class="flex flex-col font-quicksand px-4 overflow-hidden ${height} py-1">
                     <a href="/admin/blog">Lihat</a>
                     <a href="/admin/blog/add">Tambah</a>
-                    <a href="/admin/blog/edit">Edit</a>
                 </div>
 
                 <span

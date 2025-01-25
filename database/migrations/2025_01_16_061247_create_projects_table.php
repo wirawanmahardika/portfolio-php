@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('deskripsi')->type('TEXT');
-            $table->string('image');
+            $table->string('deskripsi')->type('TEXT')->nullable();
+            $table->string('image')->nullable();
             $table->string('github')->nullable();
             $table->string('web')->nullable();
+            $table->boolean('is_api')->nullable();
 
             $table->timestamps();
         });

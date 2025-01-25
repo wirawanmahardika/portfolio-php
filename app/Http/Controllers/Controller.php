@@ -67,8 +67,9 @@ class Controller extends BaseController
 
     public function project()
     {
-        $projects = Project::all();
-        return view('project', ['projects' => $projects]);
+        $projects = Project::where('is_api', false)->get();
+        $apis = Project::where('is_api', true)->get();
+        return view('project', ['projects' => $projects, 'apis' => $apis]);
     }
 
     public function adminAbout()
