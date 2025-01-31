@@ -1,32 +1,47 @@
 <x-layout>
     <x-slot:title>Home</x-slot:title>
 
-    <div class="bg-black min-h-screen font-quicksand text-gray-200 overflow-hidden">
+    <x-navbar></x-navbar>
+    <div class="bg-bgBlack min-h-screen font-quicksand text-gray-200 overflow-hidden">
         <div class="flex flex-col gap-y-10">
-            <div class="h-screen w-full">
-                <x-navbar></x-navbar>
-
-                <div class='lg:grid lg:grid-cols-2 lg:mt-10'>
+            <div class="h-screen w-full bg-black relative">
+                <div class=' lg:grid lg:grid-cols-2 lg:mt-10 justify-items-center'>
                     <div
                         class="w-[88%] mx-auto rounded-full bg-red-600 overflow-hidden shadow-sm shadow-slate-500 mt-3 sm:w-[60%] md:order-2">
                         <img src="/img/dika.png" alt="dika" class="w-5/6 mx-auto" />
                     </div>
 
                     <div class="flex flex-col p-5 lg:order-1 lg:justify-center">
-                        <p class="font-medium text-center text-lg sm:text-xl md:text-2xl">
+                        <p class="font-medium text-lg sm:text-xl md:text-2xl mb-1">
                             <span class="text-red-600 font-quicksand">Hello</span> my name
                             is
                         </p>
-                        <h1 class="font-bold text-3xl text-center font-josefin-sans sm:text-4xl md:text-5xl">
+                        <h1 class="font-bold text-3xl font-josefin-sans sm:text-4xl md:text-5xl -mb-1">
                             Wirawan Mahar<span class="text-red-600">dika</span>
                         </h1>
-                        <p class="text-lg text-center sm:text-xl md:text-2xl">
+                        <p class="text-lg sm:text-xl md:text-2xl">
                             I am a <span class="text-red-600 font-quicksand">Backend </span>
                             Developer
                         </p>
+
+                        <a href="/contact"
+                            class="rounded-full transition-colors hover:bg-red-900 py-2 px-4 mt-4  w-fit bg-red-600">Contact
+                            Me</a>
+                    </div>
+                </div>
+
+                <div
+                    class="absolute -translate-x-1/2 left-1/2 -bottom-11 rounded-full bg-neutral-900 shadow-md shadow-slate-900 p-4 flex gap-x-4 px-7">
+                    <div class="rounded-full bg-orange-600 p-2">
+                        <img src="/img/project.png" alt="project" class="size-10">
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="font-bold text-lg">Total Project</span>
+                        <span>20</span>
                     </div>
                 </div>
             </div>
+
 
             {{-- about --}}
             <div id="about">
@@ -72,13 +87,15 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-3 sm:grid-cols-5 justify-items-start gap-5 mt-20">
-                    <span class="col-span-3 sm:col-span-5 font-bold text-xl mx-auto">Used Technologies</span>
+                <div
+                    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 justify-items-start gap-5 mt-20">
+                    <span class="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-5 font-bold text-xl mx-auto">Used
+                        Technologies</span>
                     @foreach ($skills as $s)
-                        <div class="text-center sm:text-xl">
+                        <div class="text-center sm:text-xl bg-zinc-900 shadow-lg shadow-slate-900 rounded p-5">
                             <img src="{{ asset('storage/' . $s->image) }}" alt="{{ $s->name }}"
-                                class="mx-auto w-1/2 sm:w-[70%] md:w-[50%] lg:w-[40%]" />
-                            <p>{{ $s->name }}</p>
+                                class="mx-auto w-1/2" />
+                            <p class="text-sm sm:text-base">{{ $s->name }}</p>
                         </div>
                     @endforeach
                 </div>
