@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Project;
 use App\Models\Skill;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -49,8 +50,12 @@ class Controller extends BaseController
 
     public function home()
     {
+        $about = Storage::disk('s3')->get('about.txt');
         $skills = Skill::all();
-        $about = Storage::get('about.txt');
+        $skills = $skills->map(function ($s) {
+            $s->imageUrl = env('STORAGE_URL_BUCKET') . $s->image;
+            return $s;
+        });
         return view('home', ['skills' => $skills, 'about' => $about]);
     }
 
@@ -69,18 +74,24 @@ class Controller extends BaseController
     {
         $projects = Project::where('is_api', false)->get();
         $apis = Project::where('is_api', true)->get();
+        $projects = $projects->map(function ($p) {
+            $p->imageUrl = env('STORAGE_URL_BUCKET') . $p->image;
+            return $p;
+        });
         return view('project', ['projects' => $projects, 'apis' => $apis]);
     }
 
     public function adminAbout()
     {
-        $text = Storage::get('about.txt');
+        $text = Storage::disk('s3')->get('about.txt');
+        // $text = Storage::get('about.txt');
         return view('admin.about', ['text' => $text]);
     }
 
     public function adminPostAbout(Request $request)
     {
-        Storage::put('about.txt', $request->text);
+        Storage::disk('s3')->put('about.txt', $request->text);
+        // Storage::put('about.txt', $request->text);
         return redirect('/admin/about');
     }
 }

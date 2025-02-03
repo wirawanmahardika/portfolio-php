@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Skill;
+use App\Helper\BiznetStorageHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,6 +12,10 @@ class SkillsController extends Controller
     public function viewAdminSkill()
     {
         $skills = Skill::all();
+        $skills = $skills->map(function ($s) {
+            $s->imageUrl = env('STORAGE_URL_BUCKET') . $s->image;
+            return $s;
+        });
         return view('admin.skill-lihat', ["skills" => $skills]);
     }
 
@@ -33,7 +38,7 @@ class SkillsController extends Controller
 
         $skill = new Skill;
         $skill->name = $request->name;
-        $skill->image = $request->file("image")->store("skill_image", "public");
+        $skill->image = Storage::disk('s3')->put('skill_image', $request->file('image'));
         $skill->save();
 
         return redirect("/admin/skills");
@@ -52,8 +57,8 @@ class SkillsController extends Controller
             if (isset($value)) {
                 if ($key === 'image') {
                     $skill = Skill::select("image")->find($request->id);
-                    Storage::delete("public/" . $skill->image);
-                    $data['image'] = $request->file("image")->store("skill_image", "public");;
+                    Storage::disk('s3')->delete($skill->image);
+                    $data['image'] = Storage::disk('s3')->put('skill_image', $request->file('image'));
                 } else {
                     $data[$key] = $value;
                 }
@@ -61,7 +66,6 @@ class SkillsController extends Controller
         }
 
         Skill::where('id', $request->id)->update($data);
-
         return redirect("/admin/skills");
     }
 }

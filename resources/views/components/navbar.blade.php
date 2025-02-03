@@ -1,7 +1,7 @@
 <nav id="home"
     class='sticky top-0 bg-black flex justify-between items-center p-3 text-slate-50 border-b-red-500 border-b md:border-none md:p-6 md:px-10 ld:px-14 z-10'>
     <h2 class='text-lg font-bold font-cinzel sm:text-2xl md:text-3xl lg:text-cyan-600 xl:text-amber-600'>
-        Porto<span class='text-red-600'>folio</span>
+        Wira<span class='text-red-600'>wan</span>
     </h2>
     <ul class='gap-x-5 text-red-600 hidden md:flex md:font-semibold md:items-center'>
         <li class='hover:text-red-800 transition'>

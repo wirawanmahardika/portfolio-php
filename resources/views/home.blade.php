@@ -5,13 +5,13 @@
     <div class="bg-bgBlack min-h-screen font-quicksand text-gray-200 overflow-hidden">
         <div class="flex flex-col gap-y-10">
             <div class="h-screen w-full bg-black relative">
-                <div class=' lg:grid lg:grid-cols-2 lg:mt-10 justify-items-center'>
+                <div class='lg:grid lg:grid-cols-2 lg:mt-10 justify-items-center'>
                     <div
-                        class="w-[88%] mx-auto rounded-full bg-red-600 overflow-hidden shadow-sm shadow-slate-500 mt-3 sm:w-[60%] md:order-2">
+                        class="w-[88%] mx-auto rounded-full bg-red-600 overflow-hidden shadow-sm shadow-slate-500 mt-3 sm:w-1/2 md:w-2/5 md:order-2 lg:w-[60%]">
                         <img src="/img/dika.png" alt="dika" class="w-5/6 mx-auto" />
                     </div>
 
-                    <div class="flex flex-col p-5 lg:order-1 lg:justify-center">
+                    <div class="flex flex-col items-center p-5 lg:items-start lg:order-1 lg:justify-center">
                         <p class="font-medium text-lg sm:text-xl md:text-2xl mb-1">
                             <span class="text-red-600 font-quicksand">Hello</span> my name
                             is
@@ -27,17 +27,6 @@
                         <a href="/contact"
                             class="rounded-full transition-colors hover:bg-red-900 py-2 px-4 mt-4  w-fit bg-red-600">Contact
                             Me</a>
-                    </div>
-                </div>
-
-                <div
-                    class="absolute -translate-x-1/2 left-1/2 -bottom-11 rounded-full bg-neutral-900 shadow-md shadow-slate-900 p-4 flex gap-x-4 px-7">
-                    <div class="rounded-full bg-orange-600 p-2">
-                        <img src="/img/project.png" alt="project" class="size-10">
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <span class="font-bold text-lg">Total Project</span>
-                        <span>20</span>
                     </div>
                 </div>
             </div>
@@ -57,7 +46,7 @@
 
                 <div style="background-image: url('/img/about.png')"
                     class="p-5 flex flex-col items-center gap-y-4 relative z-0  min-h-screen bg-cover bg-center sm:bg-[center_top_0.5rem] sm:bg-no-repeat bg-fixed sm:text-lg md:hidden">
-                    <h2 class="mx-auto text-4xl font-bold mt-10">
+                    <h2 class="mx-auto text-4xl font-bold ">
                         About Me
                     </h2>
                     <p class="mt-20 sm:mt-10 text-justify">
@@ -93,14 +82,12 @@
                         Technologies</span>
                     @foreach ($skills as $s)
                         <div class="text-center sm:text-xl bg-zinc-900 shadow-lg shadow-slate-900 rounded p-5">
-                            <img src="{{ asset('storage/' . $s->image) }}" alt="{{ $s->name }}"
-                                class="mx-auto w-1/2" />
-                            <p class="text-sm sm:text-base">{{ $s->name }}</p>
+                            <img src="{{ $s->imageUrl }}" alt="{{ $s['name'] }}" class="mx-auto w-1/2" />
+                            <p class="text-sm sm:text-base">{{ $s['name'] }}</p>
                         </div>
                     @endforeach
                 </div>
             </div>
-
             <div
                 class="hover:bg-gray-900 hover:ring-1 ring-red-500 fixed cursor-pointer text-black w-fit h-fit z-50 bottom-3 right-3 md:bottom-10 md:right-10 bg-gray-800 p-2 rounded">
                 <a href="#home">

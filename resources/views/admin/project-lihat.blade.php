@@ -14,7 +14,7 @@
             <span class="col-span-3 font-semibold text-2xl">Web</span>
             @foreach ($projects as $p)
                 <div class="border-2 border-black rounded">
-                    <img src="{{ asset('storage/' . $p->image) }}" alt="image">
+                    <img src="{{ $p->imageUrl }}" alt="image">
                     <div class="p-3 bg-white text-black">
                         <h3 class="font-semibold text-center text-lg mb-3">({{ $p->id }}) {{ $p->nama }}
                         </h3>

@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use PhpParser\Node\Stmt\Continue_;
 
 class ProjectController extends Controller
 {
     public function viewAdminProject()
     {
-        $projects = Project::where('is_api', false)->get();
         $apis = Project::where('is_api', true)->get();
+        $projects = Project::where('is_api', false)->get();
+        $projects = $projects->map(function ($p) {
+            $p->imageUrl = env('STORAGE_URL_BUCKET') . $p->image;
+            return $p;
+        });
         return view('admin.project-lihat', ['projects' => $projects, 'apis' => $apis]);
     }
 
@@ -43,8 +46,8 @@ class ProjectController extends Controller
             if (isset($value)) {
                 if ($key === 'image') {
                     $project = Project::select("image")->find($request->id);
-                    Storage::delete("public/" . $project->image);
-                    $data['image'] = $request->file("image")->store("project_image", "public");;
+                    Storage::disk('s3')->delete($project->image);
+                    $data['image'] = Storage::disk('s3')->put('project_image', $request->file('image'));
                 } else {
                     $data[$key] = $value;
                 }
@@ -69,11 +72,9 @@ class ProjectController extends Controller
         $data = [];
         foreach ($validated as $k => $v) {
             if ($k === 'image') {
-                $data[$k] = $request->file('image')->store('project_image', 'public');
+                $data[$k] = Storage::disk('s3')->put('project_image', $request->file('image'));
                 continue;
             }
-
-
 
             if ($k === 'is_api') {
                 $isApi = $request->is_api === 'true' ? true : false;
