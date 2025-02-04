@@ -1,8 +1,7 @@
 <x-layout>
     <x-slot:title>Projects</x-slot:title>
 
-    <x-navbar></x-navbar>
-
+    <x-navbar />
     <main class="bg-bgBlack min-h-screen py-10 text-white px-5 xl:px-20 w-full">
         <h2 class="font-semibold text-3xl text-center">Projects</h2>
 

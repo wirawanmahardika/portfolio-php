@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Blog</x-slot:title>
 
-    <x-navbar></x-navbar>
+    <x-navbar />
     <main class="bg-bgBlack min-h-screen py-10">
         <div
             class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 px-10 xl:px-20 h-fit gap-8 text-white mx-auto xl:gap-x-20">
